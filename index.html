@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
+    <div class="text">
+        <h1>Rock, paper, scissors</h1>
+    </div>
+    <div class="buttons">
+        <button id="rock">Akmuo</button>
+        <button id="paper">Popieriukas</button>
+        <button id="scissors">Zirkles</button>
+    </div>
     <script>
         function getComputerChoice() {
             const choices = ["rock", "paper", "scissors"];
@@ -14,8 +23,19 @@
             return randomChoice;
         }
         
-
+        const playerSelection = prompt("Rock, paper or scissors?");
         function playRound(playerSelection, computerSelection) {
+            for(let i = 0; i < 5; i++) {
+                const computerSelection = getComputerChoice();
+                if(computerSelection === playerSelection.toLowerCase()) {
+
+                }
+                else {
+
+                }
+
+
+            }
 
         }
 
