@@ -8,37 +8,36 @@
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-    <div class="text">
-        <h1>Rock, paper, scissors</h1>
-    </div>
-    <div class="buttons">
-        <button id="rock">Akmuo</button>
-        <button id="paper">Popieriukas</button>
-        <button id="scissors">Zirkles</button>
-    </div>
+    <h1>Rock, paper and scissors!</h1>
     <script>
-        function getComputerChoice() {
-            const choices = ["rock", "paper", "scissors"];
-            var randomChoice = choices[Math.floor(Math.random()*choices.length)];
-            return randomChoice;
-        }
+    const playerScore = 0;
+    const computerScore = 0;
+
+    function getComputerChoice() {
+        const choices = ["rock", "paper", "scissors"];
+        var randomChoice = choices[Math.floor(Math.random()*choices.length)];
+        return randomChoice;
+    }
         
-        const playerSelection = prompt("Rock, paper or scissors?");
-        function playRound(playerSelection, computerSelection) {
-            for(let i = 0; i < 5; i++) {
-                const computerSelection = getComputerChoice();
-                if(computerSelection === playerSelection.toLowerCase()) {
-
-                }
-                else {
-
-                }
-
-
+    const playerSelection = prompt("Your choice").toLowerCase();
+    function playRound(playerSelection) {
+        for(let i = 0; i < 5; i++) {
+            const computerSelection = getComputerChoice();
+            if(computerSelection === playerSelection) {
+                prompt("Tie");
             }
-
+            else if(playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || 
+        playerSelection === "scissors" && computerSelection === "paper"){
+                prompt("You've won!")
+            }   
+            else {
+                prompt("You've lost!")
+            }
         }
+    }
 
+    playRound(playerSelection);
+ 
     </script> 
 </body>
 </html>
