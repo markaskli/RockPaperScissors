@@ -13,9 +13,17 @@
         <button onclick='playRound("rock")'>Rock</button>
         <button onclick="playRound('paper')">Paper</button>
         <button onclick="playRound('scissors')">Scissors</button>
+        
+    </div>
+    <div class="score">
+    <div class="playerScore"></div>
+    <div style="margin: 0px 50px">-</div>
+    <div class="computerScore"></div>
     </div>
     <div id="results">
-
+    </div>
+    <div class="tryAgain">
+        <button onclick="refreshPage()">Want to try again?</button>
     </div>
     <script>
     let playerScore = 0;
@@ -29,13 +37,16 @@
 
 
     const container = document.querySelector('#results');
-    const message = document.createElement('p');    
-    message.textContent = "labas";
+    const message = document.createElement('p');  
+    const pScore = document.querySelector('.playerScore');
+    pScore.textContent = 0;
+    
+    const cScore = document.querySelector('.computerScore');
+    cScore.textContent = 0;
         
     function playRound(playerSelection) {
-        console.log('lol');
         const computerSelection = getComputerChoice();
-        if(playerScore !== 5 || computerScore !== 5) {
+        if(playerScore !== 5 && computerScore !== 5) {
             if(computerSelection === playerSelection) {
                 message.textContent = "Tie!"
             }
@@ -43,23 +54,27 @@
         playerSelection === "scissors" && computerSelection === "paper"){
                 playerScore++;
                 message.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                pScore.textContent = playerScore; 
+                if(playerScore === 5) {
+                    message.textContent = "You've won the game!";
+                    message.style.color='green';
+                }
             }   
             else {
                 computerScore++;
                 message.textContent = `Computer won! ${computerSelection} beats ${playerSelection}`;
+                cScore.textContent = computerScore;
+                if(computerScore === 5) {
+                    message.textContent = "You've lost the game!"
+                    message.style.color='red';
+                }
             }
         }
-        else if(playerScore === 5) {
-            message.textContent = "You've won the game!";
-            message.style.color("Green");
-
-        }
-        else {
-            message.textContent = "You've lost the game!"
-            message.style.color("Red");
-        }
-        console.log(message.textContent);
         container.appendChild(message);
+    }
+
+    function refreshPage() {
+        window.location.reload();
     }
 
     
