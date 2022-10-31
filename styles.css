@@ -5,7 +5,15 @@ body {
     justify-content: center;
 }
 
-.button {
-    display:flex;
+.buttons {
+    padding: 20px;
 }
 
+#results {
+    padding: 20px;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+}
