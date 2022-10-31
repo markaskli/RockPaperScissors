@@ -9,34 +9,61 @@
 </head>
 <body>
     <h1>Rock, paper and scissors!</h1>
+    <div class="buttons">
+        <button onclick='playRound("rock")'>Rock</button>
+        <button onclick="playRound('paper')">Paper</button>
+        <button onclick="playRound('scissors')">Scissors</button>
+    </div>
+    <div id="results">
+
+    </div>
     <script>
-    const playerScore = 0;
-    const computerScore = 0;
+    let playerScore = 0;
+    let computerScore = 0;
 
     function getComputerChoice() {
         const choices = ["rock", "paper", "scissors"];
         var randomChoice = choices[Math.floor(Math.random()*choices.length)];
         return randomChoice;
     }
+
+
+    const container = document.querySelector('#results');
+    const message = document.createElement('p');    
+    message.textContent = "labas";
         
-    const playerSelection = prompt("Your choice").toLowerCase();
     function playRound(playerSelection) {
-        for(let i = 0; i < 5; i++) {
-            const computerSelection = getComputerChoice();
+        console.log('lol');
+        const computerSelection = getComputerChoice();
+        if(playerScore !== 5 || computerScore !== 5) {
             if(computerSelection === playerSelection) {
-                prompt("Tie");
+                message.textContent = "Tie!"
             }
             else if(playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || 
         playerSelection === "scissors" && computerSelection === "paper"){
-                prompt("You've won!")
+                playerScore++;
+                message.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
             }   
             else {
-                prompt("You've lost!")
+                computerScore++;
+                message.textContent = `Computer won! ${computerSelection} beats ${playerSelection}`;
             }
         }
+        else if(playerScore === 5) {
+            message.textContent = "You've won the game!";
+            message.style.color("Green");
+
+        }
+        else {
+            message.textContent = "You've lost the game!"
+            message.style.color("Red");
+        }
+        console.log(message.textContent);
+        container.appendChild(message);
     }
 
-    playRound(playerSelection);
+    
+
  
     </script> 
 </body>
